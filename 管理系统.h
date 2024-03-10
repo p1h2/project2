@@ -1,7 +1,7 @@
 #pragma once
 #include<map>
 #include<vector>
-#include"人员管理.h"
+#include"脠脣脭卤鹿脺脌铆.h"
 #include<numeric>
 #include<algorithm>>
 #include<deque>
@@ -16,15 +16,17 @@ public:
 	void creatpeople();
 	void menu();
 	void star();
-	void sctor();
 	void speech();
 	void promotion();
 	void victory();
 	void save();
 	void read();
+        void Record();
+        void clearcord();
 	int number=1;
-	vector<int>v1;  //编号
+	vector<int>v1;  //卤脿潞脜
 	vector<int>v2;
 	map<int, people>v3;
 	vector<int>v5;
+        map<int, vector<string>>record;
 };
