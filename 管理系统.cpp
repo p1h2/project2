@@ -1,35 +1,35 @@
 #include<iostream>
-#include"¹ÜÀíÏµÍ³.h"
+#include"ç®¡ç†ç³»ç»Ÿ.h"
 using namespace std;
-void manager::menu()   //²Ëµ¥¹ÜÀí
+void manager::menu()   //èœå•ç®¡ç†
 {
 	cout << "**************"<<endl;
-	cout << "1¡¢´ò¿ª¹ÜÀíÏµÍ³" << endl;
-	cout << "2¡¢²é¿´ÒÔÇ°µÄÑİ½²¼ÇÂ¼" << endl;
-	cout << "3¡¢Çå¿Õ" << endl;
-	cout << "0¡¢ÍË³ö¹ÜÀíÏµÍ³" << endl;
+	cout << "1ã€æ‰“å¼€ç®¡ç†ç³»ç»Ÿ" << endl;
+	cout << "2ã€æŸ¥çœ‹ä»¥å‰çš„æ¼”è®²è®°å½•" << endl;
+	cout << "3ã€æ¸…ç©º" << endl;
+	cout << "0ã€é€€å‡ºç®¡ç†ç³»ç»Ÿ" << endl;
 }
 
  
-void manager::creatpeople() //Ñ¡ÊÖÃû×Ö±àºÅ
+void manager::creatpeople() //é€‰æ‰‹åå­—ç¼–å·
 {
 	string nameseed = "ABCDEFGHIJKL";
 	for (int i = 0; i < nameseed.size(); i++)
 	{
 		people fk;
-		fk.name = "Ñ¡ÊÖ";
+		fk.name = "é€‰æ‰‹";
 		fk.name += nameseed[i];
 		fk.score= 0;
-		this->v1.push_back(i);   //²åÈëÑ¡ÊÖ±àºÅ
+		this->v1.push_back(i);   //æ’å…¥é€‰æ‰‹ç¼–å·
 		this->v3.insert(pair<int,people>(i,fk));
 	}
 	 
 }
 
-void manager::star()   // Ñ¡ÊÖ³éÇ©
+void manager::star()   // é€‰æ‰‹æŠ½ç­¾
 {
-	cout << "µÚ" << this->number << "´Î±ÈÈüÑ¡ÊÖ¿ªÊ¼³éÇ©" << endl;
-	cout << "³éÇ©µÄ½á¹ûÎª£º" << endl;
+	cout << "ç¬¬" << this->number << "æ¬¡æ¯”èµ›é€‰æ‰‹å¼€å§‹æŠ½ç­¾" << endl;
+	cout << "æŠ½ç­¾çš„ç»“æœä¸ºï¼š" << endl;
 
 	if (this->number == 1)
 	{
@@ -54,17 +54,11 @@ void manager::star()   // Ñ¡ÊÖ³éÇ©
 }
 
 
-void manager::sctor()
-{
-	creatpeople();
-	star();//³éÇ©
-}  
-
 void manager::speech()
 {
 	 
-	vector<int>vs;   //±ÈÈüÑ¡ÊÖÈİÆ÷
-	multimap<double, int,greater<double>>v4;  //´æ·ÅÁÙÊ±Êı¾İ
+	vector<int>vs;   //æ¯”èµ›é€‰æ‰‹å®¹å™¨
+	multimap<double, int,greater<double>>v4;  //å­˜æ”¾ä¸´æ—¶æ•°æ®
 	int num = 0;
 	if (this->number == 1)
 	{
@@ -76,8 +70,8 @@ void manager::speech()
 		vs = v2;
 		cout << endl;
 	}
-	cout << "----------µÚ" << this->number << "´Î±ÈÈü¿ªÊ¼¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª" << endl;
-	//Ñ¡ÊÖ´ò·Ö
+	cout << "----------ç¬¬" << this->number << "æ¬¡æ¯”èµ›å¼€å§‹â€”â€”â€”â€”â€”â€”â€”â€”" << endl;
+	//é€‰æ‰‹æ‰“åˆ†
 	for (vector<int>::iterator it = vs.begin(); it != vs.end(); it++)
 	{
 		num++;
@@ -90,26 +84,26 @@ void manager::speech()
 		sort(de.begin(), de.end(), greater<double>());
 		de.pop_front();
 		de.pop_back();
-		double count = accumulate(de.begin(), de.end(), 0.0f);//×îºóÒ»¸ö²ÎÊı±ØĞëÒªÓĞ
+		double count = accumulate(de.begin(), de.end(), 0.0f);//æœ€åä¸€ä¸ªå‚æ•°å¿…é¡»è¦æœ‰
 		double pingjun = count / (double)de.size();
-		this->v3[*it].score = pingjun; //·ÅÈëÆ½¾ù·Ö
-		v4.insert(pair<double, int>(pingjun, *it));//´æ·ÅÃ¿×é±àºÅºÍÆ½¾ù·Ö  »á×Ô¶¯ÅÅĞò¼üÖµ  
+		this->v3[*it].score = pingjun; //æ”¾å…¥å¹³å‡åˆ†
+		v4.insert(pair<double, int>(pingjun, *it));//å­˜æ”¾æ¯ç»„ç¼–å·å’Œå¹³å‡åˆ†  ä¼šè‡ªåŠ¨æ’åºé”®å€¼  
 		if (num % 6 == 0)
 		{
-			cout << "µÚ" << num / 6 << "ÂÖµÄ±ÈÈü¿ªÊ¼ÁË" << endl;
+			cout << "ç¬¬" << num / 6 << "è½®çš„æ¯”èµ›å¼€å§‹äº†" << endl;
 			for (multimap<double, int, greater<double>>::iterator nb = v4.begin(); nb != v4.end(); nb++)
 			{
-				cout << "±àºÅÎª£º" << nb->second <<"   " << "ĞÕÃûÎª£º" << this->v3[nb->second].name << "   " << "·ÖÊıÎª" << nb->first << endl;
+				cout << "ç¼–å·ä¸ºï¼š" << nb->second <<"   " << "å§“åä¸ºï¼š" << this->v3[nb->second].name << "   " << "åˆ†æ•°ä¸º" << nb->first << endl;
 			}
 			cout << endl;
-		          //È¡×ßÇ°ÈıÃû
+		          //å–èµ°å‰ä¸‰å
 			int i = 0;
-			for (multimap<double, int, greater<double>>::iterator nb = v4.begin();i<3&&nb != v4.end(); nb++,i++)//ÒªÓÃ&&À´ÏŞÖÆ
+			for (multimap<double, int, greater<double>>::iterator nb = v4.begin();i<3&&nb != v4.end(); nb++,i++)//è¦ç”¨&&æ¥é™åˆ¶
 			{
 				 
 				if (this->number == 1)
 				{
-					v2.push_back((*nb).second);  //°ÑµÚÒ»×é,µÚ¶ş×éµÄÇ°ÈıÃû·ÅÔÚv2ÈİÆ÷ÖĞ
+					v2.push_back((*nb).second);  //æŠŠç¬¬ä¸€ç»„,ç¬¬äºŒç»„çš„å‰ä¸‰åæ”¾åœ¨v2å®¹å™¨ä¸­
 				 }
 				else
 				{
@@ -119,15 +113,14 @@ void manager::speech()
 			v4.clear();
 		}
 	}
-	cout << "-----------µÚ" << this->number << "´Î±ÈÈü½áÊø"<<endl;
-	system("pause");
+	cout << "-----------ç¬¬" << this->number << "æ¬¡æ¯”èµ›ç»“æŸ"<<endl;
 	cout << endl;
 }
 
 
-void manager::promotion()   //½ú¼¶ĞÅÏ¢´òÓ¡
+void manager::promotion()   //æ™‹çº§ä¿¡æ¯æ‰“å°
 {
-	cout <<"µÚ"<<this->number <<"´Î½ú¼¶µÄÈËÓĞ£º"<< endl;
+	cout <<"ç¬¬"<<this->number <<"æ¬¡æ™‹çº§çš„äººæœ‰ï¼š"<< endl;
 	vector<int>v;
 	if (this->number == 1)
 	{
@@ -139,37 +132,49 @@ void manager::promotion()   //½ú¼¶ĞÅÏ¢´òÓ¡
 	}
 	for (vector<int>::iterator nb =v.begin(); nb != v.end(); nb++)
 	{
-		cout << "±àºÅÎª" << *nb <<" " << "ĞÕÃûÎª" << v3[*nb].name << " " << "·ÖÊıÎª" << v3[*nb].score << endl;
+		cout << "ç¼–å·ä¸º" << *nb <<" " << "å§“åä¸º" << v3[*nb].name << " " << "åˆ†æ•°ä¸º" << v3[*nb].score << endl;
 	}
+	system("pause");
+	cout << endl;
 }
+}
+
 
 void manager::victory()
 {
 	if(this->v5.size())
 	{
-		cout << "¾öÈüÇ°ÈıÃû£º" << endl;
+		cout << "å†³èµ›å‰ä¸‰åï¼š" << endl;
 		for (vector<int>::iterator nb = this->v5.begin(); nb != this->v5.end(); nb++)
 		{
-			cout << "±àºÅÎª" << *nb << " " << "ĞÕÃûÎª" << v3[*nb].name << " " << "·ÖÊıÎª" << v3[*nb].score << endl;
+			cout << "ç¼–å·ä¸º" << *nb << " " << "å§“åä¸º" << v3[*nb].name << " " << "åˆ†æ•°ä¸º" << v3[*nb].score << endl;
 		}
 	}
 	else
 	{
-		cout << "Ã»ÓĞ¾öÈüÃûµ¥" << endl;
+		cout << "æ²¡æœ‰å†³èµ›åå•" << endl;
 	}
 }
+
 
 void manager::save()
 {
 	ofstream  Write;
-	Write.open("speech.csv", ios::out | ios::app);//ÓÃ×·¼Ó·½Ê½Ğ´
+	Write.open("speech.csv", ios::out | ios::app);//ç”¨è¿½åŠ æ–¹å¼å†™
 	for (vector<int>::iterator nb = this->v5.begin(); nb != this->v5.end(); nb++)
 	{
-		Write << "ĞÕÃû£º" << this->v3[*nb].name << ",·ÖÊıÎª£º" << this->v3[*nb].score << endl;
+		Write << "å§“åï¼š" << this->v3[*nb].name << ",åˆ†æ•°ä¸ºï¼š" << this->v3[*nb].score << endl;
 	}
 	Write.close();
-	cout << "¼ÇÂ¼ÒÑ¾­±£´æ"<<endl;
+	cout << "è®°å½•å·²ç»ä¿å­˜"<<endl;
+	v1.clear(); //å°†v3å®¹å™¨æ¸…ç©º
+       v2.clear();
+       v3.clear();
+       v5.clear();
+       system("pause");
+        system("cls");
 } 
+
 
 void manager::read()
 {
@@ -177,26 +182,78 @@ void manager::read()
 	read.open("speech.csv", ios::in);
 	if (!read.is_open())
 	{
-		cout << "ÎÄ¼ş²»´æÔÚ" << endl;
+		cout << "æ–‡ä»¶ä¸å­˜åœ¨" << endl;
 		read.close();
 		return;
 	}
+      char c;
+      read >> c;
+     if (read.eof())//è¯»åˆ°æ–‡ä»¶ç»“æŸç¬¦æ—¶ï¼Œè¿”å›ä¸ºçœŸï¼Œå¦åˆ™ä¸ºå‡
+     {
+	cout << "æ–‡ä»¶ä¸ºç©º"<<endl;
+	return;
+       }
 	else
 	{
-		string ph;
-		read >> ph;
-		if (ph.empty())
-		{
-			cout << "ÎÄ¼şÎª¿Õ";
-			return;
-		}
-		cout << ph<<endl;
-		while(read>>ph)
-		{ 
-			cout << ph<<endl;
-		}
+		read.putback(c);
+               string ph;
+                vector<string>FK;
+                int i = 0;
+                while (getline(read, ph))
+              {
+	            if (ph.size() == 1)
+	           {
+		          record.insert(pair<int, vector<string>>(count, FK));
+		          count++;
+	              }
+	                 i++;
+	                FK.push_back(ph);
+	               if (i == 3)
+	              {
+		record.insert(pair<int, vector<string>>(count, FK));
+		i = 0;
+		FK.clear();
+		count++;
+	               }
+	      }
 
-		read.close();
 	}
+
+      read.close();
 }
- 
+
+
+void manager::Record()
+{
+	for (map<int, vector<string>>::iterator nb = record.begin(); nb != record.end(); nb++)
+	{
+		cout << "ç¬¬" << nb->first << "å±Šæ¯”èµ›çš„æˆç»©" << endl;
+		for (vector<string>::iterator NB = nb->second.begin(); NB != nb->second.end();NB++)
+		{
+			cout << *NB<<endl;
+		}
+	}
+	system("pause");
+	system("cls");
+}
+
+
+
+ void manager::clearcord()
+{
+	cout << "æ˜¯å¦æ¸…ç©ºæ–‡ä»¶" << endl;
+	cout << "1ã€æ¸…ç©º 2ã€ä¸æ¸…ç©º"<< endl;
+	int select;
+	cin >> select;
+	if (select == 1)
+	{
+		ofstream write("speech.csv", ios::trunc);
+		cout << "æ¸…ç©ºæˆåŠŸ"<<endl;
+		this->record.clear();
+		write.close();
+	}
+	system("pause");
+	system("cls");
+
+
+}
